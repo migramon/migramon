@@ -11,19 +11,21 @@ class Migrator {
 
   plugins: MigraMonPlugin[]
 
+  key: string
+
   constructor(params: {
     store: MigraMonStore
     plugins?: MigraMonPlugin[]
+    key?: string
   }) {
     this.store = params.store
     this.plugins = params.plugins || []
+    this.key = params.key || 'main'
   }
 
   async start() {
     const { store } = this
     await store.init()
-
-    // const state = await store.getMigration('main')
 
     const isDirExists = fs.existsSync(config.dir)
     if (!isDirExists) {
@@ -32,9 +34,8 @@ class Migrator {
     }
 
     const list = fs.readdirSync(config.dir)
-    console.log('config', config)
 
-    const plugins = [new ConfigPlugin({ store, key: 'main' }), ...this.plugins]
+    const plugins = [new ConfigPlugin({ store, key: this.key }), ...this.plugins]
 
     await migrationController.processAllMigrations(list, plugins)
     console.log(colors.green('====>    Migration completed successfully   <===='))

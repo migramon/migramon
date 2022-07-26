@@ -2,6 +2,7 @@ import MigraMonPlugin from '../classes/Plugin'
 import MigraMonStore from '../classes/Store'
 import invariant from 'invariant'
 import _ from 'lodash'
+import path from 'path'
 
 interface MigrationState {
   migration: string
@@ -34,8 +35,14 @@ class ConfigPlugin implements MigraMonPlugin {
   //   super(params)
   // }
 
-  prepareMigrations(list) {
-    list = _.filter(migration => !_.find(this.state, item => item.migration === migration))
+  prepareMigrations(list: string[]) {
+    list = _.filter(list, migration => {
+      const fileInfo = path.parse(migration)
+
+      return !_.find(this.state, item => {
+        return item.migration === fileInfo.name
+      })
+    })
     return list
   }
 
@@ -48,7 +55,9 @@ class ConfigPlugin implements MigraMonPlugin {
   }
 
   onAfterEachMigration(fileName: string) {
-    this.state.push({ migration: fileName, date: Date.now() })
+    const fileInfo = path.parse(fileName)
+
+    this.state.push({ migration: fileInfo.name, date: Date.now() })
   }
 
   async onAfterMigrations() {

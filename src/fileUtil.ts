@@ -5,6 +5,7 @@ import defaultTemplate from './default-template'
 
 function getFileName(fileName: string) {
   fileName = fileName.replace(/\..+/, '') // remove extension if someone put it
+  fileName = fileName.replace(/[^\w\-]/, '-') // remove not allowed symbols
 
   let newName = `${Date.now()}-${config.file.name}`
   newName = newName.replace(/\{name\}/, fileName)
