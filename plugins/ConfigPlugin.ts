@@ -58,6 +58,7 @@ class ConfigPlugin implements MigraMonPlugin {
     const fileInfo = path.parse(fileName)
 
     this.state.push({ migration: fileInfo.name, date: Date.now() })
+    this.isStateChanged = true
   }
 
   async onAfterMigrations() {
