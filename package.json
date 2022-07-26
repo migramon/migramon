@@ -6,7 +6,8 @@
   "scripts": {
     "prepack": "npx tsc --noEmit false",
     "postpublish": "npm run clean",
-    "clean": "npx module-kit-clean"
+    "clean": "npx module-kit-clean",
+    "prepare": "husky install"
   },
   "bin": {
     "migramon": "./bin/cmd.js",
@@ -17,7 +18,11 @@
     "type": "git",
     "url": "git+https://github.com/migramon/migramon.git"
   },
-  "keywords": ["migrate", "migration", "database"],
+  "keywords": [
+    "migrate",
+    "migration",
+    "database"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -28,6 +33,8 @@
     "@types/invariant": "^2.2.35",
     "@types/lodash": "^4.14.182",
     "@types/node": "^18.6.1",
+    "@zvs001/scripts": "^0.1.2",
+    "husky": "^8.0.1",
     "module-kit": "^0.1.0",
     "typescript": "^4.7.4"
   },

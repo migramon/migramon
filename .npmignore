@@ -2,5 +2,7 @@ doc
 .idea
 .editorconfig
 .eslintrc
+.husky
 **/*.ts
 !**/*.d.ts
+!bin/*
