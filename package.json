@@ -1,0 +1,38 @@
+{
+  "name": "@migramon/migrate",
+  "version": "0.0.0-alpha.2",
+  "description": "",
+  "main": "index",
+  "scripts": {
+    "prepack": "npx tsc --noEmit false",
+    "postpublish": "npm run clean",
+    "clean": "npx module-kit-clean"
+  },
+  "bin": {
+    "migramon": "./bin/cmd.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/migramon/migramon.git"
+  },
+  "keywords": ["migrate", "migration", "database"],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/migramon/migramon/issues"
+  },
+  "homepage": "https://github.com/migramon/migramon#readme",
+  "devDependencies": {
+    "@types/invariant": "^2.2.35",
+    "@types/lodash": "^4.14.182",
+    "@types/node": "^18.6.1",
+    "module-kit": "^0.1.0",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "invariant": "^2.2.4",
+    "lodash": "^4.17.21",
+    "yaml": "^2.1.1"
+  }
+}

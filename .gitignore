@@ -1,0 +1,11 @@
+.idea
+node_modules
+yarn.lock
+
+
+# Ignore compilled
+**/*.d.ts
+**/*.js.map
+**/*.js
+!bin/*
+
