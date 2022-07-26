@@ -12,7 +12,7 @@ or
 ```npm i -S @migramon/migrate```
 
 
-## Usage
+## Setup
 
 Add `migramon.yml` config file ro root of your project.
 With config like this:
@@ -20,7 +20,7 @@ With config like this:
 require:
   - ./polyfill.js
 
-migrator: ./libs/migramon-setup.ts
+migrator: ./migrations/.config/migramon-setup.ts
 dir: ./migrations
 ```
 
@@ -48,7 +48,36 @@ async function setup() {
 export default setup
 ```
 
-## Advances
+File `migramon-setup.ts` is needed for cmd usage at first point. 
+If you need programmatic usage, you can just import this file like this:
+
+```ts
+import migrationSetup from './migramon-setup.ts'
+
+async function start() {
+  const migramon = await migrationSetup()
+  await migramon.start()
+}
+
+start()
+```
+
+## Commands
+
+Migramon has few command-line commands:
+
+```cmd
+migramon create new-migration-file
+// command will create file like this: 1658763216005-new-migration-file.js
+
+
+migramon migrate
+// command will start migration process
+```
+
+You can always use ``migramon --help`` for more instructions.
+
+## Advanced
 
 #### Full `migramon.yml` config example
 
