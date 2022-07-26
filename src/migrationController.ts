@@ -1,9 +1,9 @@
-import MigraMonPlugin from './classes/Plugin'
+import MigraMonPlugin from '../classes/Plugin'
 import invariant from 'invariant'
 import _ from 'lodash'
-import resolveUtils from './libs/resolveUtils'
+import resolveUtils from '../libs/resolveUtils'
 
-async function processAllMigrations(list: string[], plugins: MigraMonPlugin[]) {
+async function processAllMigrations(list: string[], plugins: MigraMonPlugin[]): Promise<number> {
   for (let i = 0; i < plugins.length; i++) {
     const p = plugins[i]
     if (p.onBeforeMigrations) {
@@ -28,6 +28,8 @@ async function processAllMigrations(list: string[], plugins: MigraMonPlugin[]) {
       await p.onAfterMigrations()
     }
   }
+
+  return list.length
 }
 
 async function processMigration(fileName: string, plugins: MigraMonPlugin[]) {

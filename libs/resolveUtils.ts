@@ -1,5 +1,5 @@
 import path from 'path'
-import fileUtil from '../src/fileUtil'
+import config from "./libConfig";
 
 function resolvePathFromRoot(filePath: string): string {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -8,8 +8,15 @@ function resolvePathFromRoot(filePath: string): string {
   return path.resolve(rootPath, filePath)
 }
 
+function getMigrationPath(fileName: string) {
+  const filePath = path.join(config.dir, fileName)
+
+  return filePath
+}
+
+
 function resolveMigration(fileName: string) {
-  const filePath = `./${fileUtil.getMigrationFilePath(fileName)}`
+  const filePath = `./${getMigrationPath(fileName)}`
 
   const pathAbsolute = resolvePathFromRoot(filePath)
 
@@ -29,6 +36,7 @@ function requireFromRoot(filePath: string) {
 }
 
 export default {
+  getMigrationPath,
   resolvePathFromRoot,
   resolveMigration,
   importFile,

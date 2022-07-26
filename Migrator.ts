@@ -4,7 +4,9 @@ import MigraMonStore from './classes/Store'
 import colors from 'colors'
 import ConfigPlugin from './plugins/ConfigPlugin'
 import config from './libs/libConfig'
-import migrationController from './migrationController'
+import migrationController from './src/migrationController'
+import migrationUtil from './libs/migrationUtil'
+import _ from "lodash";
 
 class Migrator {
   store: MigraMonStore
@@ -33,11 +35,14 @@ class Migrator {
       return null
     }
 
-    const list = fs.readdirSync(config.dir)
+    const list = await migrationUtil.getListOfMigrations()
+    if(!list || _.isEmpty(list)) return null
 
     const plugins = [new ConfigPlugin({ store, key: this.key }), ...this.plugins]
 
-    await migrationController.processAllMigrations(list, plugins)
+    const numOfMigrations = await migrationController.processAllMigrations(list, plugins)
+
+    if(!numOfMigrations) return null
     console.log(colors.green('====>    Migration completed successfully   <===='))
   }
 }

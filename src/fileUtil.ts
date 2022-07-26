@@ -13,12 +13,6 @@ function getFileName(fileName: string) {
   return newName
 }
 
-function getMigrationFilePath(fileName: string) {
-  const filePath = path.join(config.dir, fileName)
-
-  return filePath
-}
-
 function getTemplate(): string {
   const customFilePath = config.file.template_file
   if (customFilePath) {
@@ -51,6 +45,5 @@ function createFile({ fileName }: { fileName: string }) {
 }
 
 export default {
-  getMigrationFilePath,
   createFile,
 }
