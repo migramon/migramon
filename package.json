@@ -1,6 +1,6 @@
 {
   "name": "@migramon/migrate",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "index",
   "scripts": {
@@ -11,8 +11,7 @@
   },
   "bin": {
     "migramon": "./bin/cmd.js",
-    "migra": "./bin/cmd.js",
-    "migrate": "./bin/cmd.js"
+    "migra": "./bin/cmd.js"
   },
   "repository": {
     "type": "git",
