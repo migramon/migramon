@@ -37,6 +37,7 @@ async function execute() {
   const migrator = await getMigrator()
 
   await migrator.start()
+  process.exit(0)
 }
 
 export default {
