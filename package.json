@@ -1,6 +1,6 @@
 {
   "name": "@migramon/migrate",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "",
   "main": "index",
   "scripts": {
@@ -42,6 +42,7 @@
     "colors": "^1.4.0",
     "invariant": "^2.2.4",
     "lodash": "^4.17.21",
+    "root-require-utils": "^0.0.1",
     "yaml": "^2.1.1"
   }
 }
