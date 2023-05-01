@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import config from '../libs/libConfig'
+import config from '../config'
 import defaultTemplate from './default-template'
 
 function getFileName(fileName: string) {

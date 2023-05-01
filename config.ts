@@ -1,26 +1,13 @@
 import fs from 'fs'
 import _ from 'lodash'
 import YAML from 'yaml'
+import configDefault from "./configDefault";
 
 const configFile = './migramon.yml'
 const configFileExists = fs.existsSync(configFile)
 
-let defaultConfig: {
-  require?: string[]
-  migrator?: string
-  dir: string
-  file: {
-    name: string
-    template_file?: string
-  }
-} = {
-  dir: '.migrations',
-  file: {
-    name: '{name}.ts',
-  },
-}
-// eslint-disable-next-line import/no-mutable-exports
-let config = defaultConfig
+ // eslint-disable-next-line import/no-mutable-exports
+let config = configDefault
 
 if (configFileExists) {
   const fileRaw = fs.readFileSync(configFile, 'utf-8')
@@ -30,6 +17,6 @@ if (configFileExists) {
   }
 }
 
-_.defaults(config, defaultConfig)
+_.defaults(config, configDefault)
 
 export default config

@@ -1,5 +1,5 @@
 import path from 'path'
-import config from "./libConfig";
+import config from "../config";
 
 function resolvePathFromRoot(filePath: string): string {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

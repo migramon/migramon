@@ -1,7 +1,7 @@
 import invariant from 'invariant'
 import _ from 'lodash'
 import Migrator from '../Migrator'
-import config from '../libs/libConfig'
+import config from '../config'
 import resolveUtils from '../libs/resolveUtils'
 
 function initConfig() {

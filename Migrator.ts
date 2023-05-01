@@ -3,7 +3,7 @@ import MigraMonPlugin from './classes/Plugin'
 import MigraMonStore from './classes/Store'
 import colors from 'colors'
 import ConfigPlugin from './plugins/ConfigPlugin'
-import config from './libs/libConfig'
+import config from './config'
 import migrationController from './src/migrationController'
 import migrationUtil from './libs/migrationUtil'
 import _ from "lodash";

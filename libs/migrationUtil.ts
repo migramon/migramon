@@ -1,5 +1,5 @@
 import fs from 'fs'
-import config from './libConfig'
+import config from '../config'
 import _ from "lodash";
 
 async function getListOfMigrations() {
