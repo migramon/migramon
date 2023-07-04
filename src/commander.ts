@@ -15,10 +15,18 @@ function getArgs() {
         console.error('Consider use command: create my-new-file')
         process.exit(1)
       }
-      fileUtil.createFile({ fileName })
+      try {
+        fileUtil.createFile({ fileName })
+      } catch (e) {
+        console.error('[migramon create]', e)
+      }
     })
     .command<{ }>('migrate', 'run your migration files', yargs => {}, async argv => {
-      await migrationExecutor.execute()
+      try {
+        await migrationExecutor.execute()
+      } catch (e) {
+        console.error('[migramon migrate]', e)
+      }
     })
     .demandCommand(1)
 

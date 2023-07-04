@@ -1,8 +1,8 @@
 import invariant from 'invariant'
 import _ from 'lodash'
+import rootRequireUtils from 'root-require-utils'
 import Migrator from '../Migrator'
 import config from '../config'
-import rootRequireUtils from 'root-require-utils'
 
 function initConfig() {
   const { require: requireList = [] } = config
@@ -32,7 +32,10 @@ async function execute() {
   await migrator.start()
 
   // note that we need to close process manually, because database might keep connection open
-  process.exit(0)
+  // timeout to allow do some post-logging (experimental)
+  setTimeout(() => {
+    process.exit(0)
+  }, 100)
 }
 
 export default {

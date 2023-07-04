@@ -1,12 +1,12 @@
 import fs from 'fs'
 import _ from 'lodash'
 import YAML from 'yaml'
-import configDefault from "./configDefault";
+import configDefault from './configDefault'
 
 const configFile = './migramon.yml'
 const configFileExists = fs.existsSync(configFile)
 
- // eslint-disable-next-line import/no-mutable-exports
+// eslint-disable-next-line import/no-mutable-exports
 let config = configDefault
 
 if (configFileExists) {
