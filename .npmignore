@@ -3,6 +3,4 @@ doc
 .editorconfig
 .eslintrc
 .husky
-**/*.ts
-!**/*.d.ts
 !bin/*
